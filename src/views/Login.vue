@@ -14,7 +14,7 @@
               <el-input v-model.trim="ruleForm.password"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" style="width: 100%" @click="submitForm">主要按钮</el-button>
+              <el-button type="primary" style="width: 100%" @click="submitForm" :loading="loading">登录</el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -25,6 +25,7 @@
 
 <script>
 import { login } from "@/api";
+import { setToken } from "@/utils/auth.js"
 export default {
   name: "ManagementLogin",
 
@@ -43,6 +44,7 @@ export default {
         ],
         password: [{ required: true, message: "请输入密码", trigger: "blur" }],
       },
+      loading: false
     };
   },
 
@@ -50,19 +52,22 @@ export default {
 
   methods: {
     submitForm() {
-      login(this.ruleForm).then(res => {
-        console.log("🚀 ~ file: Login.vue:55 ~ login ~ res", res)
-      }).catch(err => {
-        console.log("🚀 ~ file: Login.vue:57 ~ login ~ err", err)
-      })
-      // this.$refs.ruleForm.validate((valid) => {
-      //   if (valid) {
-      //     alert("submit!");
-      //   } else {
-      //     console.log("error submit!!");
-      //     return false;
-      //   }
-      // });
+      this.$refs.ruleForm.validate((valid) => {
+        if (valid) {
+          this.loading = true
+          login(this.ruleForm).then((res) => {
+            this.loading = false
+            setToken(res.Token)
+            sessionStorage.setItem('nickname', res.name)
+            this.$router.push('/')
+          }).catch(() => {
+
+          })
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
     },
   },
 };

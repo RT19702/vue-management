@@ -8,6 +8,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 // mock模拟数据
 import '@/mock';
 
+import '@/router/grund'
+
 Vue.use(ElementUI);
 
 Vue.config.productionTip = false
