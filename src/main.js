@@ -8,7 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 // mock模拟数据
 import '@/mock';
 
-import '@/router/grund'
+import '@/router/gurad'
 
 Vue.use(ElementUI);
 

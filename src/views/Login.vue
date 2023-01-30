@@ -59,7 +59,9 @@ export default {
             this.loading = false
             setToken(res.Token)
             sessionStorage.setItem('nickname', res.name)
-            this.$router.push('/')
+            this.$router.push({
+              path: '/'
+            })
           }).catch(() => {
 
           })
