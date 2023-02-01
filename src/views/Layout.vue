@@ -1,9 +1,13 @@
 <template>
   <div>
     <el-container>
-      <el-aside width="200px">Aside</el-aside>
+      <el-aside width="200px">
+        <nav-left></nav-left>
+      </el-aside>
       <el-container>
-        <el-header>Header</el-header>
+        <el-header>
+          <top-header></top-header>
+        </el-header>
         <el-main>Main</el-main>
       </el-container>
     </el-container>
@@ -11,9 +15,11 @@
 </template>
 
 <script>
+import NavLeft from '@/components/NavLeft.vue';
+import TopHeader from '@/components/TopHeader.vue';
 export default {
   name: "ManagementLoyout",
-
+  components: { NavLeft, TopHeader },
   data() {
     return {};
   },
