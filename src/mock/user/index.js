@@ -12,6 +12,15 @@ export const login = config => {
         success: true,
         message: '登录成功',
         name: 'Xxx',
-        Token:'3arcs9cvax0f8axc'
+        Token: '3arcs9cvax0f8axc'
+    }
+}
+
+export const hiredate = () => {
+    return {
+        code: 200,
+        success: true,
+        message: '请求成功',
+        time: '2020-07-01'
     }
 }

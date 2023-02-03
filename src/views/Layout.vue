@@ -5,7 +5,7 @@
         <nav-left></nav-left>
       </el-aside>
       <el-container>
-        <el-header>
+        <el-header class="head">
           <top-header></top-header>
         </el-header>
         <el-main>Main</el-main>
@@ -30,5 +30,9 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
+.head {
+  line-height: 60px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);;
+}
 </style>

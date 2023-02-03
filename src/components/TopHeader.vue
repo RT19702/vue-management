@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="fr">
-            <el-dropdown>
+            <el-dropdown @command="handleCommand">
                 <span class="el-dropdown-link">
                     欢迎你, {{ info }}
                     <i class="el-icon-arrow-down el-icon--right"></i>
@@ -9,24 +9,49 @@
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item>个人中心</el-dropdown-item>
                     <el-dropdown-item>修改密码</el-dropdown-item>
-                    <el-dropdown-item>退出登录</el-dropdown-item>
+                    <el-dropdown-item command="logout">退出登录</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
         </div>
         <p class="date fr">
             今天是你在阿里的第
-            <span class="tips">123</span>
+            <span class="tips">{{ entrytime }}</span>
             天
         </p>
     </div>
 </template>
 
 <script>
+import { hiredate } from "@/api"
+import { removeToken } from "@/utils/auth"
 export default {
     data() {
         return {
-            info: sessionStorage.getItem('nickname')
+            info: sessionStorage.getItem('nickname'),
+            time: 0
         }
+    },
+    methods: {
+        handleCommand(item) {
+            if (item === "logout") {
+                removeToken()
+                this.$router.push('/login')
+            }
+        },
+        async gethiredate() {
+            let data = await hiredate()
+            this.time = data.time
+        }
+    },
+    computed: {
+        entrytime() {
+            let date = new Date()
+            let formerly = this.time ? new Date(this.time) : new Date()
+            return Math.floor((date - formerly) / (1000 * 3600 * 24))
+        }
+    },
+    created() {
+        this.gethiredate()
     }
 }
 </script>

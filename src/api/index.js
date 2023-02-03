@@ -7,3 +7,10 @@ export const login = (params) => {
         data: params
     })
 }
+
+export const hiredate = () => {
+    return service({
+        url: '/hiredate',
+        method: 'get',
+    })
+}
