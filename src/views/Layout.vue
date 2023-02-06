@@ -2,13 +2,17 @@
   <div>
     <el-container>
       <el-aside width="200px">
-        <nav-left></nav-left>
+        <keep-alive>
+          <nav-left></nav-left>
+        </keep-alive>
       </el-aside>
       <el-container>
         <el-header class="head">
           <top-header></top-header>
         </el-header>
-        <el-main>Main</el-main>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -33,6 +37,7 @@ export default {
 <style lang="scss" scoped>
 .head {
   line-height: 60px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  ;
 }
 </style>

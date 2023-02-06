@@ -14,3 +14,10 @@ export const hiredate = () => {
         method: 'get',
     })
 }
+
+export const menuData = () => {
+    return service({
+        url: '/menuData',
+        method: 'get',
+    })
+}

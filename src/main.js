@@ -5,10 +5,11 @@ import store from './store'
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-// mock模拟数据
-import '@/mock';
 
 import '@/router/gurad'
+
+// mock模拟数据
+import '@/mock';
 
 Vue.use(ElementUI);
 
