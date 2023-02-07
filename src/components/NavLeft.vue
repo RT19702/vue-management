@@ -9,7 +9,7 @@
 
 <script>
 import Menu from "@/components/Menu"
-import { menuData } from "@/api"
+import { getMenuApi } from "@/api"
 export default {
     components: {
         Menu
@@ -21,7 +21,7 @@ export default {
     },
     methods: {
         async getMenu() {
-            let { data } = await menuData()
+            let { data } = await getMenuApi()
             this.menuList = data
         },
         handleOpen(key, keyPath) {

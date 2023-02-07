@@ -3,6 +3,7 @@ export default [
     path: '/',
     name: 'Layout',
     component: () => import('@/views/Layout.vue'),
+    redirect: '/index',
     children: [
       {
         path: '/index',
