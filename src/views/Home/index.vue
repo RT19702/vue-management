@@ -22,7 +22,7 @@
                 <el-card class="box-card">
                     <div slot="header">进件统计分析</div>
                     <!-- <div style="height:240px" ref="analysis">内容</div> -->
-                    <broken :date="broken.date" :chartData="broken.chartData"></broken>
+                    <broken v-if="broken.chartData.length" :date="broken.date" :chartData="broken.chartData"></broken>
                 </el-card>
             </el-col>
             <el-col :span="6">

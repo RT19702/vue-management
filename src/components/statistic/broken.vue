@@ -54,12 +54,8 @@ export default {
         },
     },
     mounted() {
+        this.broken()
     },
-    watch: {
-        chartData(){
-            this.broken()
-        }
-    }
 }
 </script>
 
