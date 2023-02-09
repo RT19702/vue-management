@@ -1,12 +1,13 @@
 <template>
-  <div>
+  <div class="content d-flex justify-center align-items-center">
     <el-row type="flex" justify="center" align="center">
       <el-card class="box-card">
-        <div slot="header" class="clearfix">
-          <h2>蚂蚁金融后台管理系统</h2>
+        <div class="images">
+          <img class="" src="~@/assets/images/guanli.png" alt="" />
         </div>
         <div>
-          <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+          <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="80px" label-position="top"
+            class="demo-ruleForm">
             <el-form-item label="用户名" prop="username">
               <el-input v-model.trim="ruleForm.username"></el-input>
             </el-form-item>
@@ -14,7 +15,7 @@
               <el-input v-model.trim="ruleForm.password"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" style="width: 100%" @click="submitForm" :loading="loading">登录</el-button>
+              <el-button style="width: 100%" @click="submitForm" :loading="loading" plain>登录</el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -75,10 +76,27 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped>
-.box-card
-  width: 500px+100px
-  margin-top: (300px/2)
-  h2
+<style lang="scss" scoped>
+.content {
+  background: url("~@/assets/images/download.jpg") no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+
+  .images {
+    text-align: center;
+
+    img {
+      width: 120px;
+    }
+  }
+}
+
+.box-card {
+  width: 500px+100px;
+
+  h2 {
     text-align: center
+  }
+}
 </style>

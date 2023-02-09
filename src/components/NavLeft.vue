@@ -1,7 +1,10 @@
 <template>
     <div>
+        <div class="images">
+            <img src="@/assets/images/guanli.png" alt="">
+        </div>
         <el-menu default-active="2" class="el-menu-vertical-demo menu" @open="handleOpen" @close="handleClose"
-            background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" :router=true>
+            background-color="#fff" text-color="#000" active-text-color="#5284f5" :router=true>
             <Menu v-for="(item, index) in menuList" :key="index" :menuList="item"></Menu>
         </el-menu>
     </div>
@@ -37,8 +40,17 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .menu {
     height: 100vh;
+}
+
+.images {
+    padding: 15px 0;
+    text-align: center;
+
+    img {
+        height: 35px;
+    }
 }
 </style>

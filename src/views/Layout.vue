@@ -40,7 +40,6 @@ export default {
 .head {
   line-height: 60px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  ;
 }
 
 .site-body {
