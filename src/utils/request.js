@@ -1,19 +1,19 @@
 import axios from "axios";
 
-const service = axios.create({
+const request = axios.create({
     // baseURL: 'http://localhost:8080',
     timeout: 5000
 })
 
 // 添加请求拦截器
-service.interceptors.request.use((config) => {
+request.interceptors.request.use((config) => {
     return config
 }, (error) => {
     return error
 });
 
 // 添加响应拦截器
-service.interceptors.response.use(function (res) {
+request.interceptors.response.use(function (res) {
     // 2xx 范围内的状态码都会触发该函数。
     // 对响应数据做点什么
     return res.data;
@@ -23,4 +23,4 @@ service.interceptors.response.use(function (res) {
     return Promise.reject(error);
 });
 
-export default service
+export default request

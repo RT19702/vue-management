@@ -19,6 +19,9 @@ export default {
         broken() {
             let broken = echarts.init(this.$refs.analysis);
             var option = {
+                tooltip: {
+                    trigger: 'axis'
+                },
                 xAxis: {
                     type: 'category',
                     boundaryGap: false,

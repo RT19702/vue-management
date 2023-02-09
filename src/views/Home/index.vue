@@ -17,30 +17,53 @@
                 </el-card>
             </el-col>
         </el-row>
-        <el-row :gutter="20">
+        <el-row :gutter="20" style="margin-bottom:20px">
             <el-col :span="18">
                 <el-card class="box-card">
                     <div slot="header">进件统计分析</div>
                     <!-- <div style="height:240px" ref="analysis">内容</div> -->
-                    <broken v-if="broken.chartData.length" :date="broken.date" :chartData="broken.chartData"></broken>
+                    <Broken v-if="broken.chartData && broken.chartData.length" :date="broken.date" :chartData="broken.chartData"></Broken>
                 </el-card>
             </el-col>
             <el-col :span="6">
                 <el-card class="box-card">
                     <div slot="header">进件统计分析</div>
-                    <div style="height:240px" ref="percent">内容</div>
+                    <PieChart v-if="pieList.length" :chartData="pieList"></PieChart>
                 </el-card>
+            </el-col>
+        </el-row>
+        <el-row :gutter="20">
+            <el-col :span="12">
+                <el-card>
+                    <div class="block">
+                        <el-timeline>
+                            <el-timeline-item :timestamp="item.date" placement="top"
+                                v-for="(item, index) in information" :key="index">
+                                <el-card>
+                                    <h4>{{ item.title }}</h4>
+                                    <p>{{ item.message }}</p>
+                                </el-card>
+                            </el-timeline-item>
+                        </el-timeline>
+                    </div>
+                </el-card>
+            </el-col>
+            <el-col :span="12">
+                <el-calendar v-model="value">
+                </el-calendar>
             </el-col>
         </el-row>
     </div>
 </template>
 
 <script>
-import broken from "@/components/statistic/broken"
-import { getBrokenApi } from "@/api"
+import Broken from "@/components/statistic/Broken"
+import PieChart from "@/components/statistic/PieChart"
+import { getChartsApi, getInformationApi } from "@/api"
 export default {
     components: {
-        broken
+        Broken,
+        PieChart
     },
     data() {
         return {
@@ -70,23 +93,32 @@ export default {
                     icon: 'el-icon-coin'
                 },
             ],
-            broken: {
-                date: [],
-                chartData: []
-            }
+            broken: {},
+            pieList: [],
+            information: [],
+            value: new Date()
         }
     },
     methods: {
         getBroken() {
-            getBrokenApi().then(res => {
-                let { date, chartData } = res.data
-                this.broken.date = date
-                this.broken.chartData = chartData
+            getChartsApi().then(res => {
+                let { data } = res
+                for (const key in data.brokenList) {
+                    this.$set(this.broken, key, data.brokenList[key])
+                }
+                this.pieList = data.pieList
+            })
+        },
+        async getInformation() {
+            let { data } = await getInformationApi()
+            this.information = data.sort((a, b) => {
+                return b.date < a.date ? -1 : 1
             })
         }
     },
     created() {
         this.getBroken()
+        this.getInformation()
     }
 }
 </script>

@@ -1,3 +1,5 @@
+import Mock from 'mockjs';
+
 // 登录接口
 export const login = config => {
     const { username } = JSON.parse(config.body)
@@ -143,5 +145,23 @@ export const menuData = () => {
         success: true,
         message: '请求成功',
         data: menuList
+    }
+}
+export const timeInformation = () => {
+    let message = [], count = 5
+
+    for (let index = 0; index < count; index++) {
+        message.push(Mock.mock({
+            "title": Mock.mock('@ctitle'),
+            "message": Mock.mock('@csentence'),
+            "date": Mock.mock('@date()'),
+        }))
+    }
+
+    return {
+        code: 200,
+        success: true,
+        message: '请求成功',
+        data: message
     }
 }
