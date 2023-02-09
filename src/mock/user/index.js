@@ -57,7 +57,7 @@ const menuList = [
             {
                 name: '风控经理',
                 icon: "el-icon-s-finance",
-                url: '/account/all'
+                url: '/account/finance'
             },
             {
                 name: '管理员',

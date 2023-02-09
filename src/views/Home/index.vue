@@ -3,16 +3,15 @@
         <el-row :gutter="20" style="margin-bottom:20px">
             <el-col :span="6" v-for="(item, index) in dataList" :key="index">
                 <el-card class="box-card card-body" :class="'theme-color' + index">
-                    <div class="content">
-                        <div class="fl">
+                    <div class="content d-flex justify-between">
+                        <div class="">
                             <p class="mb">{{ item.title }}</p>
                             <p class="mb">{{ item.price }}</p>
                             <span class="mb">{{ item.growth > 0 ? "+" + item.growth : item.growth }}% 与上月同比</span>
                         </div>
-                        <div class="fr">
+                        <div class="">
                             <i class="icon" :class="item.icon"></i>
                         </div>
-                        <div class="clear"></div>
                     </div>
                 </el-card>
             </el-col>
@@ -22,7 +21,8 @@
                 <el-card class="box-card">
                     <div slot="header">进件统计分析</div>
                     <!-- <div style="height:240px" ref="analysis">内容</div> -->
-                    <Broken v-if="broken.chartData && broken.chartData.length" :date="broken.date" :chartData="broken.chartData"></Broken>
+                    <Broken v-if="broken.chartData && broken.chartData.length" :date="broken.date"
+                        :chartData="broken.chartData"></Broken>
                 </el-card>
             </el-col>
             <el-col :span="6">
@@ -128,6 +128,10 @@ export default {
     .content {
         .icon {
             font-size: 90px;
+        }
+
+        .mb {
+            margin-bottom: 10px;
         }
     }
 }

@@ -11,7 +11,9 @@
           <top-header></top-header>
         </el-header>
         <el-main class="site-body">
-          <router-view></router-view>
+          <keep-alive>
+            <router-view></router-view>
+          </keep-alive>
         </el-main>
       </el-container>
     </el-container>
