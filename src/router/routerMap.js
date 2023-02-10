@@ -13,10 +13,10 @@ export default [
         component: () => import('@/views/Home'),
       },
       { // 所有人员
-        path: '/account/all',
-        component: () => import('@/views/Account'),
+        path: '/orders/all',
+        component: () => import('@/views/Orders'),
         meta: {
-          title: '所有人员'
+          title: '所有订单'
         }
       },
     ]

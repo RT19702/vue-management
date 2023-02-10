@@ -7,7 +7,7 @@
         </keep-alive>
       </el-aside>
       <el-container>
-        <el-header class="head">
+        <el-header class="site-head">
           <top-header></top-header>
         </el-header>
         <el-main class="site-body">
@@ -37,13 +37,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.head {
+.site-head {
   line-height: 60px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .site-body {
   height: 70vh;
+  background: #fafafa;
 
   // 滚动条整体样式
   &::-webkit-scrollbar {

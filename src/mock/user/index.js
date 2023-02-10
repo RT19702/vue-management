@@ -24,7 +24,7 @@ export const hiredate = () => {
         code: 200,
         success: true,
         message: '请求成功',
-        time: '2020-07-01'
+        time: '2021-04-01'
     }
 }
 
@@ -33,6 +33,23 @@ const menuList = [
         name: "首页",
         icon: 'el-icon-s-home',
         url: '/index'
+    },
+    {
+        name: '订单管理',
+        icon: 'el-icon-s-order',
+        url: '/order',
+        children: [
+            {
+                name: '所有订单',
+                icon: 'el-icon-tickets',
+                url: '/orders/all'
+            },
+            {
+                name: '资金记录',
+                icon: 'el-icon-bank-card',
+                url: '/orders/create'
+            }
+        ]
     },
     {
         name: '账户管理',
@@ -91,23 +108,6 @@ const menuList = [
                 icon: 'el-icon-money',
                 url: '/product/mortgage'
             },
-        ]
-    },
-    {
-        name: '订单管理',
-        icon: 'el-icon-s-order',
-        url: '/order',
-        children: [
-            {
-                name: '所有订单',
-                icon: 'el-icon-tickets',
-                url: '/orders/all'
-            },
-            {
-                name: '资金记录',
-                icon: 'el-icon-bank-card',
-                url: '/orders/create'
-            }
         ]
     },
     {

@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div class="images">
-            <img src="@/assets/images/guanli.png" alt="">
-        </div>
         <el-menu default-active="2" class="el-menu-vertical-demo menu" @open="handleOpen" @close="handleClose"
             background-color="#fff" text-color="#000" active-text-color="#5284f5" :router=true>
+            <div class="images">
+                <img src="@/assets/images/guanli.png" alt="">
+            </div>
             <Menu v-for="(item, index) in menuList" :key="index" :menuList="item"></Menu>
         </el-menu>
     </div>

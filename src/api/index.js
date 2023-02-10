@@ -28,10 +28,18 @@ export const getChartsApi = () => {
         method: 'GET',
     })
 }
-
+// 信息列表
 export const getInformationApi = () => {
     return request({
         url: '/information',
         method: 'GET'
+    })
+}
+// 订单列表
+export const getListOrders = (params) => {
+    return request({
+        url: '/listOrders',
+        method: 'POST',
+        data: params
     })
 }
