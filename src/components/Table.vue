@@ -4,15 +4,8 @@
             <el-table-column type="selection" width="55" align="center"></el-table-column>
             <el-table-column align="center" :prop="item.prop" :label="item.label" :width="item.width || 'auto'"
                 v-for="(item, index) in colData" :key="index">
-                <template v-if="item.edit" v-slot="scope">
-                    <template v-if="item.type == 'button'">
-                        <el-button v-if="scope.row.pay == 1" type="success" plain size="small">
-                            已支付
-                        </el-button>
-                        <el-button v-if="scope.row.pay == 2" type="danger" plain size="small">
-                            未支付
-                        </el-button>
-                    </template>
+                <template slot-scope="{row}">
+                    <slot :row="row" :col="item">{{ row[item.prop] || '-' }}</slot>
                 </template>
             </el-table-column>
         </el-table>
