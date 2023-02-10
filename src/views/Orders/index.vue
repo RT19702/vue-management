@@ -18,7 +18,15 @@
             </el-row>
         </el-card>
         <el-card class="box-card section-table">
-            <Table :tableData="tableData" :colData="colData"></Table>
+            <Table :tableData="tableData" :colData="colData">
+                <template v-slot="{ col, row }">
+                    <div v-if="col.prop === 'pay'">
+                        <el-button :type="row.pay == 1 ? 'success' : 'danger'" plain size="small">
+                            {{ row.pay == 1 ? '已支付' : '未支付' }}
+                        </el-button>
+                    </div>
+                </template>
+            </Table>
         </el-card>
     </div>
 </template>
@@ -78,9 +86,7 @@ export default {
                 },
                 {
                     prop: 'pay',
-                    label: '是否支付',
-                    edit: true,
-                    type: 'button'
+                    label: '是否支付'
                 },
             ],
             params: {
