@@ -18,12 +18,16 @@
             </el-row>
         </el-card>
         <el-card class="box-card section-table">
-            <Table :tableData="tableData" :colData="colData">
+            <Table :tableData="tableData" :colData="colData" :loading="loading">
                 <template v-slot="{ col, row }">
                     <div v-if="col.prop === 'pay'">
-                        <el-button :type="row.pay == 1 ? 'success' : 'danger'" plain size="small">
-                            {{ row.pay == 1 ? '已支付' : '未支付' }}
-                        </el-button>
+                        <!-- 是否支付 1已支付 2未支付 -->
+                        <el-tag v-if="row.pay == 1" type="success" plain>
+                            已支付
+                        </el-tag>
+                        <el-tag v-else type="danger" plain>
+                            未支付
+                        </el-tag>
                     </div>
                 </template>
             </Table>
@@ -94,6 +98,7 @@ export default {
                 pageSize: 10,
                 keyword: ''
             },
+            loading: true
         }
     },
     methods: {
@@ -113,6 +118,7 @@ export default {
                     // }
                 });
                 this.tableData = list
+                this.loading = false
             })
         }
     },
