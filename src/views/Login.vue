@@ -6,8 +6,14 @@
           <img class="" src="~@/assets/images/guanli.png" alt="" />
         </div>
         <div>
-          <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="80px" label-position="top"
-            class="demo-ruleForm">
+          <el-form
+            :model="ruleForm"
+            :rules="rules"
+            ref="ruleForm"
+            label-width="80px"
+            label-position="top"
+            class="demo-ruleForm"
+          >
             <el-form-item label="用户名" prop="username">
               <el-input v-model.trim="ruleForm.username"></el-input>
             </el-form-item>
@@ -15,7 +21,13 @@
               <el-input v-model.trim="ruleForm.password"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button style="width: 100%" @click="submitForm" :loading="loading" plain>登录</el-button>
+              <el-button
+                style="width: 100%"
+                @click="submitForm"
+                :loading="loading"
+                plain
+                >登录</el-button
+              >
             </el-form-item>
           </el-form>
         </div>
@@ -26,7 +38,7 @@
 
 <script>
 import { login } from "@/api";
-import { setToken } from "@/utils/auth.js"
+import { setToken } from "@/utils/auth.js";
 export default {
   name: "ManagementLogin",
 
@@ -45,27 +57,27 @@ export default {
         ],
         password: [{ required: true, message: "请输入密码", trigger: "blur" }],
       },
-      loading: false
+      loading: false,
     };
   },
 
-  mounted() { },
+  mounted() {},
 
   methods: {
     submitForm() {
       this.$refs.ruleForm.validate((valid) => {
         if (valid) {
-          this.loading = true
-          login(this.ruleForm).then((res) => {
-            this.loading = false
-            setToken(res.Token)
-            sessionStorage.setItem('nickname', res.name)
-            this.$router.push({
-              path: '/'
+          this.loading = true;
+          login(this.ruleForm)
+            .then((res) => {
+              this.loading = false;
+              setToken(res.Token);
+              sessionStorage.setItem("nickname", res.name);
+              this.$router.push({
+                path: "/",
+              });
             })
-          }).catch(() => {
-
-          })
+            .catch(() => {});
         } else {
           console.log("error submit!!");
           return false;
@@ -96,7 +108,7 @@ export default {
   width: 500px+100px;
 
   h2 {
-    text-align: center
+    text-align: center;
   }
 }
 </style>

@@ -1,8 +1,8 @@
 import Mock from 'mockjs';
 
 export const listOrders = (config) => {
-    let { page, pageSize, keyword } = JSON.parse(config.body)
-    console.log(page, pageSize, keyword);
+    let { pageSize } = JSON.parse(config.body)
+    // let { page, pageSize, keyword } = JSON.parse(config.body)
     return {
         code: 200,
         success: true,
@@ -21,7 +21,8 @@ export const listOrders = (config) => {
                 'price': Mock.Random.integer(5000, 50000),//运费
                 'from|1': ["移动端", "pc端"],
                 'pay|1': [1, 2],//是否支付1已支付2未支付
-            }]
+            }],
+            "total": 47
         })
     }
 }
