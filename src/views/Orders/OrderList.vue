@@ -14,9 +14,9 @@
         <el-col :span="6" :offset="12">
           <div class="d-flex justify-end">
             <el-button type="primary">新建订单</el-button>
-            <el-button disabled>审核</el-button>
-            <el-button disabled>修改</el-button>
-            <el-button disabled>作废</el-button>
+            <el-button :disabled="!selection.length">审核</el-button>
+            <el-button :disabled="!selection.length">修改</el-button>
+            <el-button :disabled="!selection.length">作废</el-button>
           </div>
         </el-col>
       </el-row>
@@ -29,6 +29,7 @@
         :total="total"
         :currentPage="params.page"
         @onPaginationChange="onPaginationChange"
+        @handleSelectionChange="handleSelectionChange"
       >
         <template v-slot="{ col, row }">
           <div v-if="col.prop === 'pay'">
@@ -153,6 +154,7 @@ export default {
       },
       total: 0,
       loading: true,
+      selection: [],
     };
   },
   methods: {
@@ -160,7 +162,6 @@ export default {
       this.loading = true;
       getListOrders(this.params)
         .then((res) => {
-          console.log("🚀 ~ file: OrderList.vue:163 ~ .then ~ res:", res);
           let { list, total } = res.data;
           list.filter((element) => {
             if (element.status) {
@@ -174,10 +175,6 @@ export default {
                 ? (element.status = "审核拒绝")
                 : "";
             }
-            // if (element.pay) {
-            //     element.pay == 1 ? element.pay = "已支付" :
-            //         element.pay == 2 ? element.pay = "未支付" : ''
-            // }
           });
           this.tableData = list;
           this.total = total;
@@ -192,6 +189,9 @@ export default {
       ({ page: this.params.page, limit: this.params.pageSize } = params);
       this.getOrder();
     },
+    handleSelectionChange(selection) {
+      this.selection = selection;
+    },
     editCurrent(row) {
       console.log("🚀 ~ file: OrderList.vue:195 ~ tableEditing ~ row", row);
     },
@@ -199,6 +199,7 @@ export default {
       console.log("🚀 ~ file: OrderList.vue:199 ~ deleteCurrent ~ row:", row);
     },
   },
+  computed: {},
   mounted() {
     this.getOrder();
   },

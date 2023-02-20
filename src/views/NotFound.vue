@@ -1,15 +1,12 @@
 <template>
-    <div>
-        404
-    </div>
+  <div>
+    <el-empty :image-size="200" :description="'暂无权限访问'"></el-empty>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>
-
 </style>

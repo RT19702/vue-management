@@ -12,8 +12,9 @@
         </el-header>
         <el-main class="site-body">
           <keep-alive>
-            <router-view></router-view>
+            <router-view v-if="$route.meta.keepAlive"></router-view>
           </keep-alive>
+          <router-view v-if="!$route.meta.keepAlive"></router-view>
         </el-main>
       </el-container>
     </el-container>
@@ -21,8 +22,8 @@
 </template>
 
 <script>
-import NavLeft from '@/components/NavLeft.vue';
-import TopHeader from '@/components/TopHeader.vue';
+import NavLeft from "@/components/NavLeft.vue";
+import TopHeader from "@/components/TopHeader.vue";
 export default {
   name: "ManagementLoyout",
   components: { NavLeft, TopHeader },
@@ -30,7 +31,7 @@ export default {
     return {};
   },
 
-  mounted() { },
+  mounted() {},
 
   methods: {},
 };

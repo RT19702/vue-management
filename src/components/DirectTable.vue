@@ -126,13 +126,11 @@ export default {
       this.$emit("onPaginationChange", data);
     },
     handleSelectionChange(selection) {
-      console.log(
-        "🚀 ~ file: DirectTable.vue:129 ~ handleSelectionChange ~ selection",
-        selection
-      );
+      this.$emit("handleSelectionChange", selection);
     },
   },
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+</style>

@@ -83,60 +83,60 @@ const menuList = [
             },
         ]
     },
-    {
-        name: '产品管理',
-        icon: 'el-icon-menu',
-        url: '/product',
-        children: [
-            {
-                name: '全部产品',
-                icon: 'el-icon-notebook-2',
-                url: '/product/all'
-            },
-            {
-                name: '汽车消费',
-                icon: 'el-icon-truck',
-                url: '/product/carConsomption'
-            },
-            {
-                name: '房产消费',
-                icon: 'el-icon-office-building',
-                url: '/product/estate'
-            },
-            {
-                name: '抵押贷款',
-                icon: 'el-icon-money',
-                url: '/product/mortgage'
-            },
-        ]
-    },
-    {
-        name: '客户管理',
-        icon: 'el-icon-user',
-        url: '/customer',
-        children: [
-            {
-                name: '基本信息',
-                icon: 'el-icon-chat-square',
-                url: '/customer/info'
-            },
-            {
-                name: '资金记录',
-                icon: 'el-icon-bank-card',
-                url: '/record'
-            }
-        ]
-    },
-    {
-        name: "待办事项",
-        icon: 'el-icon-chat-dot-square',
-        url: '/todo'
-    },
-    {
-        name: "个人中心",
-        icon: 'el-icon-user',
-        url: '/my'
-    },
+    // {
+    //     name: '产品管理',
+    //     icon: 'el-icon-menu',
+    //     url: '/product',
+    //     children: [
+    //         {
+    //             name: '全部产品',
+    //             icon: 'el-icon-notebook-2',
+    //             url: '/product/all'
+    //         },
+    //         {
+    //             name: '汽车消费',
+    //             icon: 'el-icon-truck',
+    //             url: '/product/carConsomption'
+    //         },
+    //         {
+    //             name: '房产消费',
+    //             icon: 'el-icon-office-building',
+    //             url: '/product/estate'
+    //         },
+    //         {
+    //             name: '抵押贷款',
+    //             icon: 'el-icon-money',
+    //             url: '/product/mortgage'
+    //         },
+    //     ]
+    // },
+    // {
+    //     name: '客户管理',
+    //     icon: 'el-icon-user',
+    //     url: '/customer',
+    //     children: [
+    //         {
+    //             name: '基本信息',
+    //             icon: 'el-icon-chat-square',
+    //             url: '/customer/info'
+    //         },
+    //         {
+    //             name: '资金记录',
+    //             icon: 'el-icon-bank-card',
+    //             url: '/record'
+    //         }
+    //     ]
+    // },
+    // {
+    //     name: "待办事项",
+    //     icon: 'el-icon-chat-dot-square',
+    //     url: '/todo'
+    // },
+    // {
+    //     name: "个人中心",
+    //     icon: 'el-icon-user',
+    //     url: '/my'
+    // },
 ]
 // 导航栏菜单接口
 export const menuData = () => {

@@ -1,8 +1,8 @@
 import Mock from 'mockjs';
 
 export const listOrders = (config) => {
-    let { pageSize } = JSON.parse(config.body)
-    // let { page, pageSize, keyword } = JSON.parse(config.body)
+    let { page, pageSize, keyword } = JSON.parse(config.body)
+    console.log('page', page, 'pageSize', pageSize, 'keyword', keyword)
     return {
         code: 200,
         success: true,
