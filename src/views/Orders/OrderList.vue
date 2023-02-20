@@ -37,6 +37,29 @@
             <el-tag v-else type="danger" plain> 未支付 </el-tag>
           </div>
         </template>
+        <template v-slot:operator>
+          <el-table-column align="center" width="180px" label="操作">
+            <!-- <template slot-scope="{ row }"> -->
+            <template v-slot="{ row }">
+              <div class="d-flex justify-center">
+                <el-button
+                  class="operator-text"
+                  type="primary"
+                  size="mini"
+                  @click="editCurrent(row)"
+                  >编辑</el-button
+                >
+                <el-button
+                  class="operator-text"
+                  type="danger"
+                  size="mini"
+                  @click="deleteCurrent(row)"
+                  >删除</el-button
+                >
+              </div>
+            </template>
+          </el-table-column>
+        </template>
       </DirectTable>
       <!-- <div class="d-flex justify-end dom-mt-20">
         <Pagination
@@ -68,48 +91,59 @@ export default {
         {
           prop: "id",
           label: "订单号",
+          align: "center",
         },
         {
           prop: "status",
           label: "状态",
+          align: "center",
         },
         {
           prop: "date",
           label: "下单时间",
+          align: "center",
         },
         {
           prop: "start",
           label: "起始城市",
           width: "200px",
+          align: "center",
         },
         {
           prop: "end",
           label: "目的城市",
           width: "200px",
+          align: "center",
         },
         {
           prop: "cargo",
           label: "货物名称",
+          align: "center",
         },
         {
           prop: "count",
           label: "件数",
+          align: "center",
         },
         {
           prop: "unit",
           label: "单位",
+          align: "center",
         },
         {
           prop: "price",
           label: "运费",
+          align: "center",
         },
         {
           prop: "from",
           label: "订单来源",
+          align: "center",
         },
         {
           prop: "pay",
           label: "是否支付",
+          align: "center",
         },
       ],
       params: {
@@ -126,6 +160,7 @@ export default {
       this.loading = true;
       getListOrders(this.params)
         .then((res) => {
+          console.log("🚀 ~ file: OrderList.vue:163 ~ .then ~ res:", res);
           let { list, total } = res.data;
           list.filter((element) => {
             if (element.status) {
@@ -155,11 +190,13 @@ export default {
     onPaginationChange(params) {
       // 解构赋值
       ({ page: this.params.page, limit: this.params.pageSize } = params);
-      console.log(
-        "🚀 ~ file: index.vue:158 ~ onPaginationChange ~ params",
-        params
-      );
       this.getOrder();
+    },
+    editCurrent(row) {
+      console.log("🚀 ~ file: OrderList.vue:195 ~ tableEditing ~ row", row);
+    },
+    deleteCurrent(row) {
+      console.log("🚀 ~ file: OrderList.vue:199 ~ deleteCurrent ~ row:", row);
     },
   },
   mounted() {

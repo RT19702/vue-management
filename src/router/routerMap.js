@@ -14,7 +14,7 @@ export default [
       },
       { // 所有人员
         path: '/orders/all',
-        component: () => import('@/views/Orders'),
+        component: () => import('@/views/Orders/OrderList'),
         meta: {
           title: '所有订单'
         }

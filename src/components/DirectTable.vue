@@ -1,13 +1,31 @@
 <template>
   <div>
-    <el-table :data="tableData" border style="width: 100%" v-loading="loading">
-      <!-- <el-table-column
+    <el-table
+      :data="tableData"
+      border
+      style="width: 100%"
+      v-loading="loading"
+      @selection-change="handleSelectionChange"
+    >
+      <!-- 多选 -->
+      <el-table-column
         type="selection"
         width="55"
         align="center"
-      ></el-table-column> -->
+        v-if="showSelection"
+      >
+      </el-table-column>
+      <!-- 序号 -->
       <el-table-column
+        type="index"
+        width="50"
         align="center"
+        label="序号"
+        v-if="showIndex"
+      >
+      </el-table-column>
+      <el-table-column
+        :align="item.align"
         :prop="item.prop"
         :label="item.label"
         :width="item.width || 'auto'"
@@ -18,7 +36,9 @@
           <slot :row="row" :col="item">{{ row[item.prop] || "-" }}</slot>
         </template>
       </el-table-column>
+      <slot name="operator"></slot>
     </el-table>
+
     <template v-if="showPagination">
       <div class="d-flex justify-end dom-mt-20">
         <Pagination
@@ -56,6 +76,15 @@ export default {
     loading: {
       type: Boolean,
       default: false,
+    },
+    // 多选
+    showSelection: {
+      type: Boolean,
+      default: true,
+    },
+    showIndex: {
+      type: Boolean,
+      default: true,
     },
     // 是否显示分页
     showPagination: {
@@ -96,9 +125,14 @@ export default {
       this.current = data.page;
       this.$emit("onPaginationChange", data);
     },
+    handleSelectionChange(selection) {
+      console.log(
+        "🚀 ~ file: DirectTable.vue:129 ~ handleSelectionChange ~ selection",
+        selection
+      );
+    },
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>
