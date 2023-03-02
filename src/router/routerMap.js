@@ -23,14 +23,14 @@ export default [
           keepAlive: true
         }
       },
-      { // 404页面
-        path: '*',
-        name: 'NotFound',
-        component: () => import('@/views/NotFound.vue'),
-        meta: {
-          title: '404',
-        }
-      }
+      // { // 404页面
+      //   path: '*',
+      //   name: 'NotFound',
+      //   component: () => import('@/views/NotFound.vue'),
+      //   meta: {
+      //     title: '404',
+      //   }
+      // }
     ]
   },
   { // 登录页
@@ -38,5 +38,12 @@ export default [
     name: 'Login',
     component: () => import('@/views/Login.vue')
   },
-
+  // { // 404页面
+  //   path: '*',
+  //   name: 'NotFound',
+  //   component: () => import('@/views/NotFound.vue'),
+  //   meta: {
+  //     title: '404',
+  //   }
+  // }
 ]

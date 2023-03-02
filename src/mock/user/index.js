@@ -15,7 +15,8 @@ export const login = config => {
         success: true,
         message: '登录成功',
         name: 'Xxx',
-        Token: '3arcs9cvax0f8axc'
+        Token: '3arcs9cvax0f8axc',
+        auth:'boss'
     }
 }
 // 入职时间接口
@@ -61,28 +62,40 @@ const menuList = [
                 icon: "el-icon-user",
                 url: '/account/all'
             },
-            {
-                name: '业务人员',
-                icon: "el-icon-phone-outline",
-                url: '/account/business'
-            },
-            {
-                name: '审核人员',
-                icon: "el-icon-s-check",
-                url: '/account/audit'
-            },
-            {
-                name: '风控经理',
-                icon: "el-icon-s-finance",
-                url: '/account/finance'
-            },
-            {
-                name: '管理员',
-                icon: "el-icon-s-custom",
-                url: '/account/admin'
-            },
         ]
     },
+    // {
+    //     name: '账户管理',
+    //     icon: 'el-icon-coin',
+    //     url: '/account',
+    //     children: [
+    //         {
+    //             name: '所有人员',
+    //             icon: "el-icon-user",
+    //             url: '/account/all'
+    //         },
+    //         {
+    //             name: '业务人员',
+    //             icon: "el-icon-phone-outline",
+    //             url: '/account/business'
+    //         },
+    //         {
+    //             name: '审核人员',
+    //             icon: "el-icon-s-check",
+    //             url: '/account/audit'
+    //         },
+    //         {
+    //             name: '风控经理',
+    //             icon: "el-icon-s-finance",
+    //             url: '/account/finance'
+    //         },
+    //         {
+    //             name: '管理员',
+    //             icon: "el-icon-s-custom",
+    //             url: '/account/admin'
+    //         },
+    //     ]
+    // },
     // {
     //     name: '产品管理',
     //     icon: 'el-icon-menu',
